@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Avinash CRUD PROJECT</title>
+    <link rel="stylesheet"   href="{% static 'css/croco.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+      
+<body>
+    <div class="main">
+        <div class="box" id="header"><h1>CRUD MINI PROJECT</h1>
+        </div>
+        <div class="box" id="box1">
+<form method="post">
+    {% csrf_token %}
+  <div class="container">
+  <h2 style="font-size:30px;">Insert Student Details</h2>
+  </div>
+    <div class="container" style="background-color:white">
+      <input type="text" placeholder="Enter the Student name" name="name"  required>
+      <input type="text" placeholder=" Enter the Student Email " name="email" required>
+      <input type="text" placeholder="Enter the Student Age" name="age" required>
+    <input type="text" placeholder="Select Gender" name="gender" required>
+    <input type="submit" value="Submit">
+    </div>
+    </form>
+    </div>
+        <div class="box" id="box2">
+          <h2>Student Details</h2>
+          {% if messages %}
+          {% for message in messages %}
+          <div>{{message}}</div>
+          {% endfor %}
+          {% endif %}
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  <th>Email</th>
+  <th>Age</th>
+  <th>Gender</th>
+  <th>Edit</th>
+  <th>Delete</th>
+  </tr>
+  {% if obj %}
+  {% for k in obj %}
+    <tr>
+      <td>{{k.id}}</td>
+    <td>{{k.name}}</td>
+    <td>{{k.email}}</td>
+    <td>{{k.age}}</td>
+    <td>{{k.gender}}</td>
+    <td><a href="/edit/{{ k.id }}"><i class="fa-solid fa-pen-to-square fa-fade"></i></a></td>  
+    <td><a href="/delete/{{k.id}}"><i class="fa-solid fa-trash fa-shake"></i></a></td>
+    {% endfor %}
+    {% endif %}
+</table>
+</div>
+        <div class="box" id="footer">&copy All rights Reserves by Avinash
+          <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a> 
+            <a href="#"><i class="fa fa-twitter"></i></a>  
+            <a href="#"><i class="fa fa-linkedin"></i></a>  
+            <a href="#"><i class="fa fa-facebook"></i></a> 
+          </div>
+        </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinash CRUD PROJECT</title>
+</head>
+<style>
+    form {
+        border: 3px solid #f1f1f1;
+        font-family: Arial;
+        padding:5px;
+      }
+  
+      .container{
+        padding: 10px;
+        text-align: center;
+        background-color:black;
+        color:white;
+        
+  
+      }
+      
+      input[type=text], input[type=submit] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+      
+      
+      
+      input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        border-radius: 2px;
+      }
+      
+      input[type=submit]:hover {
+        opacity: 0.8;
+      }
+   
+</style>
+<body>
+    <form  method="post" action="/update/{{obj.id}}">
+        <div>
+            <form method="post">
+                {% csrf_token %}
+              <div class="container">
+              <h2 style="font-size:30px;">Update Student Details</h2>
+              </div>
+                <div class="container" style="background-color:white">
+                  <input type="text" placeholder="Enter the Student name" name="name"  required>
+                  <input type="text" placeholder=" Enter the Student Email " name="email" required>
+                  <input type="text" placeholder="Enter the Student Age" name="age" required>
+                <input type="text" placeholder="Select Gender" name="gender" required>
+                <input type="submit" value="Update">
+                </div>
+                </form>
+        </div>
+    </form>
+</body>
+</html>
